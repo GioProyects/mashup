@@ -85,7 +85,9 @@ var funciones = (function() {
         alert("Algun campo esta vacio");
       } else {
         if (numVideo > 50) {
-          console.log("consulta recursiva");
+          var p =document.createElement("p");
+          p.innerHTML="Consulta recursiva";
+          document.getElementById('results').appendChild(p);
 
         } else {
           buscarVideo(nomVideo, numVideo, "", function(response) {
