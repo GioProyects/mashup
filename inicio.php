@@ -19,7 +19,7 @@ $settings = array(
   // $url="https://api.twitter.com/1.1/users/search.json";
   $url="https://api.twitter.com/1.1/account/verify_credentials.json";
   // $getfield = '?screen_name=oscarge51015813';
-  $getfield="";
+  // $getfield="";
   $requestMethod = 'GET';
 
   $twitter = new TwitterAPIExchange($settings);
@@ -27,8 +27,8 @@ $settings = array(
       ->buildOauth($url, $requestMethod)
       ->performRequest();
 
-  foreach (json_decode($response) as $key) {
-    echo "<div>";
+  // foreach (json_decode($response) as $key) {
+  //   echo "<div>";
     // echo "<img src='".$key->profile_image_url."'>";
     // echo "<p>Nombre:<strong>".$key->name."</strong></p>";
     // echo "<p>Screen name:<h3>".$key->screen_name."</h3></p>";
@@ -38,7 +38,7 @@ $settings = array(
     // echo "<img src=".$key->profile_image_url.">";
     // echo "<p>".$key->followers_count."</p>";
 
-    echo "</div>";
-  }
+  //   echo "</div>";
+  // }
 
   var_dump($response);
