@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mashup</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-md-12 col-lg-12">
+        <h2>Youtube API + Google Maps API</h2>
+        <p>Mashup</p>
+        <form>
+          <div class="form-group">
+            <label for="usr">Nombre:</label>
+            <input type="text" class="form-control" id="nomVideo">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Numero de videos:</label>
+            <input type="number" class="form-control" id="numVideo">
+          </div>
+          <button id="btnBuscar" type="button" class="btn btn-danger">Buscar</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="results" class="row">
+    </div>
+
+
+    <div class="row">
+      <div id="blok_paginacion" class="col-lg-6" style="display:none;">
+        <ul class="pagination">
+          <li id="btn_prev" class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li id="btn_next" class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+        <h4>Pagina: <span id="page"></span></h4>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="js/youtube.js"></script>
+</body>
+
+</html
