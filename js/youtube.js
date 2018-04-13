@@ -19,6 +19,19 @@ var funciones = (function() {
     xhttp.send();
   };
 
+  var infoVideo = function (idVideo, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        json = JSON.parse(this.responseText);
+        callback(json);
+      }
+    };
+    var temp = url[1].concat("part=snippet,recordingDetails", "&id=", idVideo, "&", apiKey);
+    xhttp.open("GET", temp, true);
+    xhttp.send();
+  };
+
   function tplawesome(e, t) {
     res = e;
     for (var n = 0; n < t.length; n++) {
@@ -101,6 +114,9 @@ var funciones = (function() {
                     "id_video": item.id.videoId
                   }])
                 };
+                infoVideo(item.id.videoId,function (data) {
+                  console.log(data.items[0].recordingDetails);
+                });
               });
               document.getElementById("blok_paginacion").style.display = "block";
               document.getElementById("btn_prev").addEventListener("click", function() {
