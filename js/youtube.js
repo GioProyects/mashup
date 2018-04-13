@@ -1,34 +1,47 @@
 var funciones = (function() {
   var apiKey = "&key=AIzaSyDpWaTwg13YO51k3w_J-4fwjwObpbjDe4Y";
-  var url = ["https://www.googleapis.com/youtube/v3/search?",
+  var url = [
+    "https://www.googleapis.com/youtube/v3/search?",
     "https://www.googleapis.com/youtube/v3/videos?"
   ];
   var current_page = 1;
   var records_per_page = 10;
   var objJson = [];
+  var map;
 
-  var buscarVideo = function(nombre, numero, token, callback) {
+  var buscar = function(nombre, numero, token, callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         callback(this.responseText);
       }
     }
-    var temp = url[0].concat("part=id,snippet", "&q=", nombre, "&maxResults=", numero, "&pageToken=", token, apiKey);
+    var temp = url[0].concat("part=id", "&q=", nombre, "&maxResults=", numero, "&pageToken=", token, apiKey);
     xhttp.open("GET", temp, true);
     xhttp.send();
   };
 
-  var infoVideo = function (idVideo, callback) {
+  var infoVideo = function(idVideo, callback) {
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
+    xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         json = JSON.parse(this.responseText);
         callback(json);
       }
     };
-    var temp = url[1].concat("part=snippet,recordingDetails", "&id=", idVideo, "&", apiKey);
+    var temp = url[1].concat("part=id,recordingDetails", "&id=", idVideo, "&", apiKey);
     xhttp.open("GET", temp, true);
+    xhttp.send();
+  };
+
+  var buscaTweet = function(nombreTweet, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        callback(this.responseText);
+      }
+    };
+    xhttp.open("GET", "twitter.php?q=" + nombreTweet, true);
     xhttp.send();
   };
 
@@ -90,6 +103,29 @@ var funciones = (function() {
     }
   }
 
+  function initMap() {
+    var mapHtml = document.getElementById('map');
+    map = new google.maps.Map(mapHtml, {
+      center: {
+        lat: -34.397,
+        lng: 150.644
+      },
+      zoom: 8
+    });
+  }
+
+  function ponerMarcasAMarca(map, arrayCoordenadas) {
+    arrayCoordenadas.forEach(coor, function(index, item) {
+      var marker = new google.maps.Marker({
+        position: {
+          lat: coor.latitude,
+          lng: coor.longitude
+        },
+        map: map
+      });
+    });
+  }
+
   var main = function() {
     document.getElementById("btnBuscar").addEventListener("click", function() {
       var nomVideo = document.getElementById("nomVideo").value;
@@ -98,12 +134,89 @@ var funciones = (function() {
         alert("Algun campo esta vacio");
       } else {
         if (numVideo > 50) {
-          var p =document.createElement("p");
-          p.innerHTML="Consulta recursiva";
-          document.getElementById('results').appendChild(p);
+          var numConsultas = Math.ceil(numVideo / 50);
+          var consultaFinal = numVideo % 50;
+          var paginaActual = 0;
+          var coordenadasVideso = [];
+          var infoVideos = [];
+          var tokenPage = "";
+
+          let recursivo3 = function() {
+            console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
+            if (paginaActual == (numConsultas - 1)) {
+              buscar(nomVideo, consultaFinal, tokenPage, function(data) {
+                let res = JSON.parse(data);
+                res.items.forEach(element => {
+                  if (typeof element != 'undefined') {
+                    infoVideo(element.id.videoId, function(data) {
+                      if (data.items.length > 0) {
+                        if (data.items[0].recordingDetails)
+                          coordenadasVideso.push(data.items[0].recordingDetails);
+                      }
+                    });
+                  }
+                  infoVideos.push(element.id.videoId);
+                });
+                // poner paginacion videos
+                $("#results").html("");
+                $.get("reproductor.html", function(result) {
+                  $.each(infoVideos, function(index, item) {
+                    var html = result;
+                    objJson[index] = {
+                      adName: tplawesome(html, [{
+                        "id_video": item
+                      }])
+                    };
+                  });
+                  document.getElementById("blok_paginacion").style.display = "block";
+                  document.getElementById("btn_prev").addEventListener("click", function() {
+                    funciones.prevPage();
+                  });
+                  document.getElementById("btn_next").addEventListener("click", function() {
+                    funciones.nextPage();
+                  });
+                  changePage(1);
+                });
+
+                // poner las coordenadas en el mapa
+                console.log(coordenadasVideso);
+
+
+                
+                $.each(coordenadasVideso, function(index, item) {
+                  if (item.location !== undefined) {
+                    if (item.location.latitude !== undefined && item.location.longitude !== undefined) {
+                      ponerMarcasAMarca(map, item.location);
+                    }
+                  }
+                });
+
+              });
+            } else {
+              buscar(nomVideo, 50, tokenPage, function(data) {
+                let res = JSON.parse(data);
+                tokenPage = res.nextPageToken
+                res.items.forEach(element => {
+                  if (typeof element != "undefined") {
+                    infoVideo(element.id.videoId, function(datos) {
+                      if (datos.items.length > 0) {
+                        if (datos.items[0].recordingDetails)
+                          coordenadasVideso.push(datos.items[0].recordingDetails);
+                      }
+                    });
+                    infoVideos.push(element.id.videoId);
+                  }
+                });
+                paginaActual += 1;
+                recursivo3();
+              });
+            }
+          };
+          recursivo3();
+          // console.log(coordenadasVideso);
 
         } else {
-          buscarVideo(nomVideo, numVideo, "", function(response) {
+          buscar(nomVideo, numVideo, "", function(response) {
             var data = JSON.parse(response);
             $("#results").html("");
             $.get("reproductor.html", function(result) {
@@ -114,8 +227,18 @@ var funciones = (function() {
                     "id_video": item.id.videoId
                   }])
                 };
-                infoVideo(item.id.videoId,function (data) {
-                  console.log(data.items[0].recordingDetails);
+                infoVideo(item.id.videoId, function(data) {
+                  if (data.items.length > 0) {
+                    if (data.items.recordingDetails !== undefined) {
+                      // coordenadasVideso.push(data.items.recordingDetails);
+                      // console.log(data.items.recordingDetails
+                      if (data.items.recordingDetails.location !== undefined) {
+                        if (data.items.recordingDetails.latitude !== undefined && data.items.recordingDetails.longitude !== undefined) {
+                          ponerMarcasAMarca(map, item.location);
+                        }
+                      }
+                    }
+                  }
                 });
               });
               document.getElementById("blok_paginacion").style.display = "block";
@@ -127,6 +250,18 @@ var funciones = (function() {
               });
               changePage(1);
             });
+
+            // console.log(coordenadasVideso);
+            //
+            // $.each(coordenadasVideso,function (index,item) {
+            //   if (item.location !== undefined) {
+            //     if (item.location.latitude !== undefined && item.location.longitude !== undefined) {
+            //       ponerMarcasAMarca(map,item.location);
+            //     }
+            //   }
+            // });
+
+
           });
         }
       }
@@ -136,7 +271,8 @@ var funciones = (function() {
   return {
     main: main,
     prevPage: prevPage,
-    nextPage: nextPage
+    nextPage: nextPage,
+    mapa: initMap
   };
 })();
 window.onload = funciones.main;

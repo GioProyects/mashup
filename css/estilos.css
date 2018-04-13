@@ -14,3 +14,8 @@
 .bs-example{
 	margin: 20px;
 }
+
+#map{
+  height: 350px;
+  width: 450px;
+}
