@@ -143,16 +143,16 @@ var funciones = (function() {
           var tokenPage = "";
           let recursivo3 = function() {
             // console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
+            buscaTweet(nomVideo,function (data) {
+              document.getElementById("quitarDiv").style=none;
+              if (data.tamanio>0) {
+                $.each(data.datos,function (index,item) {
+                  ponerMarcas(item,"Twitter");
+                  console.log(item);
+                });
+              }
+            });
             if (paginaActual == (numConsultas - 1)) {
-              buscaTweet(nomVideo,function (data) {
-                document.getElementById("quitarDiv").style=none;
-                if (data.tamanio>0) {
-                  $.each(data.datos,function (index,item) {
-                    ponerMarcas(item,"Twitter");
-                    console.log(item);
-                  });
-                }
-              });
               buscar(nomVideo, consultaFinal, tokenPage, function(data) {
                 let res = JSON.parse(data);
                 res.items.forEach(element => {
@@ -193,7 +193,6 @@ var funciones = (function() {
                   }
                 });
               });
-
             } else {
               buscar(nomVideo, 50, tokenPage, function(data) {
                 let res = JSON.parse(data);
