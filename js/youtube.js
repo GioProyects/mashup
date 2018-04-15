@@ -38,7 +38,7 @@ var funciones = (function() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        callback(this.responseText);
+        callback(JSON.parse(this.responseText));
       }
     };
     xhttp.open("GET", "twitter/twitter.php?q=" + nombreTweet, true);
@@ -207,7 +207,7 @@ var funciones = (function() {
           };
           recursivo3();
         } else {
-          buscar(nomVideo, numVideo, "", function(response) {
+          /*buscar(nomVideo, numVideo, "", function(response) {
             var data = JSON.parse(response);
             $("#results").html("");
             $.get("reproductor.html", function(result) {
@@ -235,6 +235,9 @@ var funciones = (function() {
               });
               changePage(1);
             });
+          });*/
+          buscaTweet(nomVideo,function (datos) {
+              console.log(datos);
           });
         }
       }
