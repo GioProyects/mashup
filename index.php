@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -8,14 +8,28 @@
   <title>Mashup</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
+
   <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <a class="navbar-brand"> Youtube API + Google Maps API + Twitter API</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <div style="font-size:2em; color:DodgerBlue">
+          <i class="fab fa-twitter"></i>
+          <a href="twitter/autenticacion.php">Iniciar sesión</a>
+        </div>
+      </ul>
+    </nav>
+
+    <?php if(isset($_SESSION)){ ?>
     <div class="row">
       <div class="col-md-12 col-md-12 col-lg-12">
-        <h2>Youtube API + Google Maps API + Twitter API</h2>
         <form>
           <div class="form-group">
             <label for="usr">Nombre:</label>
@@ -29,7 +43,6 @@
         </form>
       </div>
     </div>
-
     <div class="row">
       <div class="col-lg-6">
         <div class="row" id="results">
@@ -45,7 +58,11 @@
       <div class="col-lg-6">
         <div id="map"></div>
       </div>
+    </div>
 
+    <?php }else{ ?>
+    <h3>Inicia sesion</h3>
+    <?php } ?>
   </div>
 
 
