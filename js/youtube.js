@@ -41,7 +41,7 @@ var funciones = (function() {
         callback(this.responseText);
       }
     };
-    xhttp.open("GET", "twitter.php?q=" + nombreTweet, true);
+    xhttp.open("GET", "twitter/twitter.php?q=" + nombreTweet, true);
     xhttp.send();
   };
 
@@ -110,20 +110,21 @@ var funciones = (function() {
         lat: -34.397,
         lng: 150.644
       },
-      zoom: 8
+      zoom:2,
+      mapTypeId:"roadmap"
     });
   }
 
-  function ponerMarcasAMarca(map, arrayCoordenadas) {
-    arrayCoordenadas.forEach(coor, function(index, item) {
+  function ponerMarcas(map,dicCoordenadas,nombreImagen) {
+    var iconBase = 'img/';
+    // initMap();
+    if (dicCoordenadas.latitude !== undefined && dicCoordenadas.longitude !== undefined) {
       var marker = new google.maps.Marker({
-        position: {
-          lat: coor.latitude,
-          lng: coor.longitude
-        },
-        map: map
+        position: {lat:dicCoordenadas.latitude,lng:dicCoordenadas.longitude},
+        map: map,
+        icon: iconBase + nombreImagen
       });
-    });
+    }
   }
 
   var main = function() {
@@ -140,9 +141,8 @@ var funciones = (function() {
           var coordenadasVideso = [];
           var infoVideos = [];
           var tokenPage = "";
-
           let recursivo3 = function() {
-            console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
+            // console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
             if (paginaActual == (numConsultas - 1)) {
               buscar(nomVideo, consultaFinal, tokenPage, function(data) {
                 let res = JSON.parse(data);
@@ -179,18 +179,11 @@ var funciones = (function() {
                 });
 
                 // poner las coordenadas en el mapa
-                console.log(coordenadasVideso);
-
-
-                
                 $.each(coordenadasVideso, function(index, item) {
                   if (item.location !== undefined) {
-                    if (item.location.latitude !== undefined && item.location.longitude !== undefined) {
-                      ponerMarcasAMarca(map, item.location);
-                    }
+                      ponerMarcas(map,item.location,"YouTube.png");
                   }
                 });
-
               });
             } else {
               buscar(nomVideo, 50, tokenPage, function(data) {
@@ -213,8 +206,6 @@ var funciones = (function() {
             }
           };
           recursivo3();
-          // console.log(coordenadasVideso);
-
         } else {
           buscar(nomVideo, numVideo, "", function(response) {
             var data = JSON.parse(response);
@@ -230,13 +221,7 @@ var funciones = (function() {
                 infoVideo(item.id.videoId, function(data) {
                   if (data.items.length > 0) {
                     if (data.items.recordingDetails !== undefined) {
-                      // coordenadasVideso.push(data.items.recordingDetails);
-                      // console.log(data.items.recordingDetails
-                      if (data.items.recordingDetails.location !== undefined) {
-                        if (data.items.recordingDetails.latitude !== undefined && data.items.recordingDetails.longitude !== undefined) {
-                          ponerMarcasAMarca(map, item.location);
-                        }
-                      }
+                      ponerMarcas(map,data.items.recordingDetails,"YouTube.png");
                     }
                   }
                 });
@@ -250,18 +235,6 @@ var funciones = (function() {
               });
               changePage(1);
             });
-
-            // console.log(coordenadasVideso);
-            //
-            // $.each(coordenadasVideso,function (index,item) {
-            //   if (item.location !== undefined) {
-            //     if (item.location.latitude !== undefined && item.location.longitude !== undefined) {
-            //       ponerMarcasAMarca(map,item.location);
-            //     }
-            //   }
-            // });
-
-
           });
         }
       }

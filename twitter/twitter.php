@@ -41,7 +41,7 @@ foreach (json_decode($response)->statuses as $key) {
   // echo "<br/>";
 }
 // var_dump($ids);
-$json="{";
+$json=array();
 foreach ($ids as $id) {
   $getfield2="?id=".$id;
   $response2 = $twitter->setGetfield($getfield2)
@@ -50,18 +50,11 @@ foreach ($ids as $id) {
 
   $respuesta=json_decode($response2);
   if (!is_null($respuesta->geo)) {
-    $json.="coordenadas:".$respuesta->geo->coordinates;
-
+    json["coordenadas"]=$respuesta;
+    // $json.="coordenadas:".$respuesta->geo->coordinates;
   }
-  // if (isset($coordenadas)) {
-  //   echo "<h2>".$coordenadas->type."</h2>";
-  // }else{
-  //   echo "<h3>No coordenadas</h3>";
-  // }
 }
-
-$json.="}";
-echo $json;
+echo json_encode($json);
 // ###################################################################################
 // 984550821198254080
 // 984550812633501699
