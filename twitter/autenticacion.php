@@ -16,7 +16,7 @@ $settings = array(
 $url="https://api.twitter.com/oauth/request_token";
 $requestMethod="POST";
 $postfields=array(
-  "oauth_callback"=>"https://mashup-ymt.000webhostapp.com/"
+  "oauth_callback"=>"https://mashup-ymt.000webhostapp.com/index.php"
 );
 
 $twitter=new TwitterAPIExchange($settings);
