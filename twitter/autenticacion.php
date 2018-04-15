@@ -16,13 +16,14 @@ $settings = array(
 $url="https://api.twitter.com/oauth/request_token";
 $requestMethod="POST";
 $postfields=array(
+  "oauth_callback"=>"https://mashup-ymt.000webhostapp.com/"
 );
 
 $twitter=new TwitterAPIExchange($settings);
 $response=$twitter->buildOauth($url,$requestMethod)
                   ->setPostfields($postfields)
                   ->performRequest();
-
+// var_dump($response);
 $porcion=explode("&",$response);
 $credenciales = array();
 foreach ($porcion as $k) {
@@ -30,11 +31,15 @@ foreach ($porcion as $k) {
   $credenciales[$temp[0]]=$temp[1];
 }
 
-
+// var_dump($credenciales);
 
 
 $TOKEN=$credenciales["oauth_token"];
 $TOKEN_SECRET=$credenciales["oauth_token_secret"];
+
+$_SESSION["oauth_token"]=$credenciales["oauth_token"];
+$_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
+
 $url2="https://api.twitter.com/oauth/authorize";
 $requestMethod2="GET";
 $getfield2="?oauth_token=".$credenciales["oauth_token"];
