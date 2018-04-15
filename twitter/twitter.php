@@ -42,8 +42,8 @@ if (isset($buscar)) {
     // $json[]=$respuesta->geo;
     if (!is_null($respuesta->geo)) {
       $json[]=array(
-        "latitude"=>$respuesta->geo->coordinates[1],
-        "longitude"=>$respuesta->geo->coordinates[0]
+        "latitude"=>$respuesta->geo->coordinates[0],
+        "longitude"=>$respuesta->geo->coordinates[1]
       );
       // $json[]=$respuesta->geo->coordinates;
     }

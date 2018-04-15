@@ -110,19 +110,19 @@ var funciones = (function() {
         lat: -34.397,
         lng: 150.644
       },
-      zoom:2,
+      zoom:1,
       mapTypeId:"roadmap"
     });
   }
 
-  function ponerMarcas(map,dicCoordenadas,nombreImagen) {
+  function ponerMarcas(dicCoordenadas,nombreImagen) {
     var iconBase = 'img/';
     // initMap();
     if (dicCoordenadas.latitude !== undefined && dicCoordenadas.longitude !== undefined) {
       var marker = new google.maps.Marker({
         position: {lat:dicCoordenadas.latitude,lng:dicCoordenadas.longitude},
         map: map,
-        icon: iconBase + nombreImagen
+        icon: iconBase + nombreImagen+".png"
       });
     }
   }
@@ -144,6 +144,15 @@ var funciones = (function() {
           let recursivo3 = function() {
             // console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
             if (paginaActual == (numConsultas - 1)) {
+              buscaTweet(nomVideo,function (data) {
+                document.getElementById("quitarDiv").style=none;
+                if (data.tamanio>0) {
+                  $.each(data.datos,function (index,item) {
+                    ponerMarcas(item,"Twitter");
+                    console.log(item);
+                  });
+                }
+              });
               buscar(nomVideo, consultaFinal, tokenPage, function(data) {
                 let res = JSON.parse(data);
                 res.items.forEach(element => {
@@ -177,14 +186,14 @@ var funciones = (function() {
                   });
                   changePage(1);
                 });
-
                 // poner las coordenadas en el mapa
                 $.each(coordenadasVideso, function(index, item) {
                   if (item.location !== undefined) {
-                      ponerMarcas(map,item.location,"YouTube.png");
+                      ponerMarcas(item.location,"YouTube");
                   }
                 });
               });
+
             } else {
               buscar(nomVideo, 50, tokenPage, function(data) {
                 let res = JSON.parse(data);
@@ -207,7 +216,16 @@ var funciones = (function() {
           };
           recursivo3();
         } else {
-          /*buscar(nomVideo, numVideo, "", function(response) {
+          buscaTweet(nomVideo,function (data) {
+            document.getElementById("quitarDiv").style=none;
+            if (data.tamanio>0) {
+              $.each(data.datos,function (index,item) {
+                ponerMarcas(item,"Twitter");
+                console.log(item);
+              });
+            }
+          });
+          buscar(nomVideo, numVideo, "", function(response) {
             var data = JSON.parse(response);
             $("#results").html("");
             $.get("reproductor.html", function(result) {
@@ -235,19 +253,6 @@ var funciones = (function() {
               });
               changePage(1);
             });
-          });*/
-          buscaTweet(nomVideo,function (data) {
-            if (data.tamanio>0) {
-              $.each(data.datos,function (index,item) {
-                ponerMarcas(map,item,"Twitter");
-                console.log(item);
-              });
-            }
-            // console.log(datos.datos);
-            // if (datos.tamanio >= 2) {
-            //   console.log(datos[0]);
-            //   console.log(datos[1]);
-            // }
           });
         }
       }
