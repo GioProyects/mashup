@@ -236,8 +236,18 @@ var funciones = (function() {
               changePage(1);
             });
           });*/
-          buscaTweet(nomVideo,function (datos) {
-              console.log(datos);
+          buscaTweet(nomVideo,function (data) {
+            if (data.tamanio>0) {
+              $.each(data.datos,function (index,item) {
+                ponerMarcas(map,item,"Twitter");
+                console.log(item);
+              });
+            }
+            // console.log(datos.datos);
+            // if (datos.tamanio >= 2) {
+            //   console.log(datos[0]);
+            //   console.log(datos[1]);
+            // }
           });
         }
       }
