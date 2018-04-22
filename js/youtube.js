@@ -232,6 +232,9 @@ var funciones = (function() {
         } else {
           var t=document.getElementById("token").value;
           var y=document.getElementById("token_access").value;
+
+          console.log(t);
+          console.log(y);
           buscaTweet(nomVideo,t,y,function (data) {
             // document.getElementById("quitarDiv").style=none;
             if (data.tamanio>0) {
