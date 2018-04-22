@@ -197,6 +197,7 @@ var funciones = (function() {
                   btnSig.addEventListener("click", function() {
                     nextPage();
                   });
+                  changePage(1);
                 });
                 // poner las coordenadas en el mapa
                 $.each(coordenadasVideso, function(index, item) {
