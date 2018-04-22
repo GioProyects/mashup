@@ -39,7 +39,7 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="row" id="results">
-          <div id="blok_paginacion" class="col-lg-6" style="display:none;">
+          <div id="blok_paginacion" class="col-lg-6" style="display:block;">
             <ul class="pagination">
               <li id="btn_prev" class="page-item"><a class="page-link" href="#">Previous</a></li>
               <li id="btn_next" class="page-item"><a class="page-link" href="#">Next</a></li>

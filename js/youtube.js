@@ -177,7 +177,7 @@ var funciones = (function() {
                       }]);
                     };
                   });
-                  document.getElementById("blok_paginacion").style.display = "block";
+                  // document.getElementById("blok_paginacion").style.display = "block";
                   document.getElementById("btn_prev").addEventListener("click", function() {
                     funciones.prevPage();
                   });
