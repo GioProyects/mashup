@@ -174,7 +174,7 @@ var funciones = (function() {
                     objJson[index] = {
                       adName: tplawesome(html, [{
                         "id_video": item
-                      }])
+                      }]);
                     };
                   });
                   document.getElementById("blok_paginacion").style.display = "block";
