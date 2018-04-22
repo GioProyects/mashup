@@ -19,15 +19,8 @@
       <div class="navbar-header">
         <a class="navbar-brand"> Youtube API + Google Maps API + Twitter API</a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <div style="font-size:2em; color:DodgerBlue">
-          <i class="fab fa-twitter"></i>
-          <a href="twitter/autenticacion.php">Iniciar sesión</a>
-        </div>
-      </ul>
     </nav>
 
-    <?php if(isset($_SESSION)){ ?>
     <div class="row">
       <div class="col-md-12 col-md-12 col-lg-12">
         <form>
@@ -37,7 +30,7 @@
           </div>
           <div class="form-group">
             <label for="pwd">Numero de videos:</label>
-            <input type="number" class="form-control" id="numVideo">
+            <input type="number" class="form-control" id="numVideo" placeholder="Mas seguro poner arriba de los 100">
           </div>
           <button id="btnBuscar" type="button" class="btn btn-danger">Buscar</button>
         </form>
@@ -59,12 +52,6 @@
         <div id="map"></div>
       </div>
     </div>
-
-    <?php }else{ ?>
-      <div class="alert alert-danger">
-        <strong>Debes iniciar sesion </strong>
-      </div>
-    <?php } ?>
   </div>
 
 
