@@ -1,8 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
-  echo "<p id='token' hidden>".$token=$_SESSION["oauth_token"]."</p>";
-  echo "<p id=' token_access' hidden>".$token_access=$_SESSION["oauth_access_token"]."</p>";
+
 }else {
   echo "<p> Esta pagina es solo para usuarios registrados</p>";
   echo "<br/><a href='index.php'> Iniciar Sesion</a>";
@@ -70,6 +69,11 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
          </div>
        </div>
      </div>
+
+     <?php
+       echo "<p id='token' hidden>".$_SESSION["oauth_token"]."</p>";
+       echo "<p id=' token_access' hidden>".$_SESSION["oauth_access_token"]."</p>";
+      ?>
 
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
