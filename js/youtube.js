@@ -153,7 +153,7 @@ var funciones = (function() {
           let recursivo3 = function() {
             // console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
             buscaTweet(nomVideo,function (data) {
-              document.getElementById("quitarDiv").style=none;
+              // document.getElementById("quitarDiv").style=none;
               if (data.tamanio>0) {
                 $.each(data.datos,function (index,item) {
                   ponerMarcas(item,"Twitter");
@@ -227,7 +227,7 @@ var funciones = (function() {
           };
           recursivo3();
         } else {
-          /*buscaTweet(nomVideo,function (data) {
+          buscaTweet(nomVideo,function (data) {
             // document.getElementById("quitarDiv").style=none;
             if (data.tamanio>0) {
               $.each(data.datos,function (index,item) {
@@ -235,7 +235,7 @@ var funciones = (function() {
                 console.log(item);
               });
             }
-          });*/
+          });
 
           // document.getElementById('blok_paginacion').style.display="block";
           // console.log(temp);
