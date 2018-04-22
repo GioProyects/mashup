@@ -74,11 +74,15 @@ var funciones = (function() {
   }
 
   function changePage(page) {
-    var btn_next = document.getElementById("btn_next");
-    var btn_prev = document.getElementById("btn_prev");
-    var listing_table = document.getElementById("results");
-    var page_span = document.getElementById("page");
-
+    // var btn_next = document.getElementById("btn_next");
+    // var btn_prev = document.getElementById("btn_prev");
+    // var listing_table = document.getElementById("results");
+    // var page_span = document.getElementById('page');
+    var btn_next=$("#btn_next");
+    var btn_prev=$("#btn_prev");
+    var listing_table=$("#results");
+    var page_span=$("#page");
+    // console.log(page_span);
     // Validate page
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
@@ -88,18 +92,23 @@ var funciones = (function() {
       $("#results").append(objJson[i].adName);
       // document.getElementById("results").innerHTML+=objJson[i].adName;
     }
-    page_span.innerHTML = page + "/" + numPages();
+    // page_span.innerHTML = page + "/" + numPages();
+    page_span.html(page+"/"+numPages());
 
     if (page == 1) {
-      btn_prev.style.visibility = "hidden";
+      // btn_prev.style.visibility = "hidden";
+      btn_prev.css("visibility='hidden'");
     } else {
-      btn_prev.style.visibility = "visible";
+      // btn_prev.style.visibility = "visible";
+      btn_prev.css("visibility='visible'");
     }
 
     if (page == numPages()) {
-      btn_next.style.visibility = "hidden";
+      // btn_next.style.visibility = "hidden";
+      btn_next.css("visibility='hidden'");
     } else {
-      btn_next.style.visibility = "visible";
+      // btn_next.style.visibility = "visible";
+      btn_next.css("visibility='visible'");
     }
   }
 
@@ -153,6 +162,10 @@ var funciones = (function() {
               }
             });
             if (paginaActual == (numConsultas - 1)) {
+              document.getElementById('bloque_paginacion').style.display="block";
+              var btnPrev=document.getElementById('btn_prev');
+              var btnSig=document.getElementById('btn_next');
+
               buscar(nomVideo, consultaFinal, tokenPage, function(data) {
                 let res = JSON.parse(data);
                 res.items.forEach(element => {
@@ -177,14 +190,13 @@ var funciones = (function() {
                       }])
                     };
                   });
-                  // document.getElementById("blok_paginacion").style.display = "block";
-                  document.getElementById("btn_prev").addEventListener("click", function() {
-                    funciones.prevPage();
+                  // block.style.display="block";
+                  btnPrev.addEventListener("click", function() {
+                    prevPage();
                   });
-                  document.getElementById("btn_next").addEventListener("click", function() {
-                    funciones.nextPage();
+                  btnSig.addEventListener("click", function() {
+                    nextPage();
                   });
-                  changePage(1);
                 });
                 // poner las coordenadas en el mapa
                 $.each(coordenadasVideso, function(index, item) {
@@ -215,16 +227,23 @@ var funciones = (function() {
           };
           recursivo3();
         } else {
-          buscaTweet(nomVideo,function (data) {
-            document.getElementById("quitarDiv").style=none;
+          /*buscaTweet(nomVideo,function (data) {
+            // document.getElementById("quitarDiv").style=none;
             if (data.tamanio>0) {
               $.each(data.datos,function (index,item) {
                 ponerMarcas(item,"Twitter");
                 console.log(item);
               });
             }
-          });
-          /*buscar(nomVideo, numVideo, "", function(response) {
+          });*/
+
+          // document.getElementById('blok_paginacion').style.display="block";
+          // console.log(temp);
+          document.getElementById('bloque_paginacion').style.display="block";
+          var btnPrev=document.getElementById('btn_prev');
+          var btnSig=document.getElementById('btn_next');
+
+          buscar(nomVideo, numVideo, "", function(response) {
             var data = JSON.parse(response);
             $("#results").html("");
             $.get("reproductor.html", function(result) {
@@ -243,16 +262,18 @@ var funciones = (function() {
                   }
                 });
               });
-              document.getElementById("blok_paginacion").style.display = "block";
-              docu*/ment.getElementById("btn_prev").addEventListener("click", function() {
-                funciones.prevPage();
+
+              // console.log(block);
+              // block.style.display="block";
+              btnPrev.addEventListener("click", function() {
+                prevPage();
               });
-              document.getElementById("btn_next").addEventListener("click", function() {
-                funciones.nextPage();
+              btnSig.addEventListener("click", function() {
+                nextPage();
               });
               changePage(1);
             });
-          });*/
+          });
         }
       }
     });
@@ -260,8 +281,6 @@ var funciones = (function() {
 
   return {
     main: main,
-    prevPage: prevPage,
-    nextPage: nextPage,
     mapa: initMap
   };
 })();
