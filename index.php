@@ -52,6 +52,10 @@
         <div id="map"></div>
       </div>
     </div>
+
+      <div class="alert alert-danger">
+        <strong>Debes iniciar sesion </strong>
+      </div>
   </div>
 
 
