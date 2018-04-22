@@ -5,12 +5,15 @@ define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
 define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
 // $TOKEN='449924072-LfvTLKWeVwVGKqDCoISSOrAUDVZx2tSaJjEN6aDe';
 // $TOKEN_SECRET='cXJLCOaSna7LycPH0TephGBQkYhwuv3h9lCdAqg8c96RU';
-$TOKEN=$_SESSION["oauth_token"];
-$TOKEN_SECRET=$_SESSION["oauth_token_secret"];
+// $TOKEN=$_SESSION["oauth_token"];
+// $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
+
+$TOKEN=$_REQUEST["oauth_token"];
+$TOKEN_SECRET=$_REQUEST["oauth_access_token"];
 $buscar=$_REQUEST['q'];
 // $buscar="#love";
 
-if (isset($buscar)) {
+if (isset($TOKEN)) {
   $buscar="#".$buscar;
   $settings = array(
     'oauth_access_token' => $TOKEN,
