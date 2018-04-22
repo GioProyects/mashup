@@ -224,7 +224,7 @@ var funciones = (function() {
               });
             }
           });
-          buscar(nomVideo, numVideo, "", function(response) {
+          /*buscar(nomVideo, numVideo, "", function(response) {
             var data = JSON.parse(response);
             $("#results").html("");
             $.get("reproductor.html", function(result) {
@@ -244,7 +244,7 @@ var funciones = (function() {
                 });
               });
               document.getElementById("blok_paginacion").style.display = "block";
-              document.getElementById("btn_prev").addEventListener("click", function() {
+              docu*/ment.getElementById("btn_prev").addEventListener("click", function() {
                 funciones.prevPage();
               });
               document.getElementById("btn_next").addEventListener("click", function() {
@@ -252,7 +252,7 @@ var funciones = (function() {
               });
               changePage(1);
             });
-          });
+          });*/
         }
       }
     });
