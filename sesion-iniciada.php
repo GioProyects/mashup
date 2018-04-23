@@ -30,6 +30,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
          <div class="navbar-header">
            <a class="navbar-brand"> Youtube API + Google Maps API + Twitter API</a>
          </div>
+         <ul class="nav navbar-nav navbar-right">
+           <div style="font-size:2em; color:DodgerBlue">
+             <i class="fab fa-twitter"></i>
+             <a href="cerrar-sesion.php">Cerrar sesión</a>
+           </div>
+         </ul>
        </nav>
 
        <div class="row">
