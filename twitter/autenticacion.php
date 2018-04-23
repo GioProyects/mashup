@@ -34,10 +34,10 @@ foreach ($porcion as $k) {
 
 
 $TOKEN=$credenciales["oauth_token"];
-$TOKEN_SECRET=$credenciales["oauth_token_secret"];
+$TOKEN_SECRET=$credenciales["oauth_access_token"];
 
 $_SESSION["oauth_token"]=$credenciales["oauth_token"];
-$_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
+$_SESSION["oauth_access_token"]=$credenciales["oauth_access_token"];
 $_SESSION["loggedin"]=true;
 
 $url2="https://api.twitter.com/oauth/authorize";
