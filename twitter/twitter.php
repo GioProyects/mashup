@@ -3,17 +3,13 @@ session_start();
 require_once 'TwitterAPIExchange.php';
 define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
 define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
-// $TOKEN='449924072-LfvTLKWeVwVGKqDCoISSOrAUDVZx2tSaJjEN6aDe';
-// $TOKEN_SECRET='cXJLCOaSna7LycPH0TephGBQkYhwuv3h9lCdAqg8c96RU';
-// $TOKEN=$_SESSION["oauth_token"];
-// $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
 
 $TOKEN=$_SESSION["oauth_token"];
 $TOKEN_SECRET=$_SESSION["oauth_access_token"];
 var_dump($TOKEN);
+echo "<br/>";
 var_dump($TOKEN_SECRET);
 $buscar=$_REQUEST['q'];
-// $buscar="#love";
 
 if (isset($TOKEN)) {
   $buscar="#".$buscar;
@@ -25,7 +21,6 @@ if (isset($TOKEN)) {
   );
   $url="https://api.twitter.com/1.1/search/tweets.json";
   $getfield="?q=".$buscar."&count=100";
-  // $getfield="?q=#love&count=100";
   $requestMethod = 'GET';
   $url2="https://api.twitter.com/1.1/statuses/show.json";
 
@@ -38,7 +33,6 @@ if (isset($TOKEN)) {
   foreach (json_decode($response)->statuses as $key) {
     $ids[]=$key->id;
   }
-  // var_dump($ids);
   $json=array();
   $conta=0;
   foreach ($ids as $id) {
@@ -55,7 +49,6 @@ if (isset($TOKEN)) {
       );
     }
   }
-  // var_dump($json);
   echo json_encode(array(
     "datos"=>$json,
     "tamanio"=>sizeof($json))
