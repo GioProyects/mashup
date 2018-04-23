@@ -30,30 +30,33 @@ foreach ($porcion as $k) {
   $credenciales[$temp[0]]=$temp[1];
 }
 
-var_dump($credenciales);
+$TOKEN=$credenciales["oauth_token"];
+$TOKEN_SECRET=$credenciales["oauth_token_secret"];
 
+$_SESSION["oauth_token"]=$credenciales["oauth_token"];
+$_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
+$_SESSION["loggedin"]=true;
 
-// $TOKEN=$credenciales["oauth_token"];
-// $TOKEN_SECRET=$credenciales["oauth_token_secret"];
-//
-// $_SESSION["oauth_token"]=$credenciales["oauth_token"];
-// $_SESSION["oauth_access_token"]=$credenciales["oauth_token_secret"];
-// $_SESSION["loggedin"]=true;
-//
-// $url2="https://api.twitter.com/oauth/authorize";
-// $requestMethod2="GET";
-// $getfield2="?oauth_token=".$credenciales["oauth_token"];
-//
-// $settings = array(
-//   'oauth_access_token' => $TOKEN,
-//   'oauth_access_token_secret' => $TOKEN_SECRET,
-//   'consumer_key' => CONSUMER_KEY,
-//   'consumer_secret' => CONSUMER_SECRET
-// );
-//
-// $twitter=new TwitterAPIExchange($settings);
-// $response2 = $twitter->setGetfield($getfield2)
-//     ->buildOauth($url2, $requestMethod2)
-//     ->performRequest();
-//
-// echo $response2;
+$url2="https://api.twitter.com/oauth/authorize";
+$requestMethod2="GET";
+$getfield2="?oauth_token=".$credenciales["oauth_token"];
+
+$settings = array(
+  'oauth_access_token' => $TOKEN,
+  'oauth_access_token_secret' => $TOKEN_SECRET,
+  'consumer_key' => CONSUMER_KEY,
+  'consumer_secret' => CONSUMER_SECRET
+);
+
+$twitter=new TwitterAPIExchange($settings);
+$response2 = $twitter->setGetfield($getfield2)
+    ->buildOauth($url2, $requestMethod2)
+    ->performRequest();
+
+echo $response2;
+
+// array(3) {
+//    ["oauth_token"]=> string(27) "a2vYlgAAAAAA5csJAAABYvDAIpw"
+//    ["oauth_token_secret"]=> string(32) "6yGOsX3R56JN0pDfMTmKMkf9uf9kemI2"
+//    ["oauth_callback_confirmed"]=> string(4) "true"
+//  }

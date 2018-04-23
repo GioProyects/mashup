@@ -5,7 +5,7 @@ define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
 define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
 
 $TOKEN=$_SESSION["oauth_token"];
-$TOKEN_SECRET=$_SESSION["oauth_access_token"];
+$TOKEN_SECRET=$_SESSION["oauth_token_secret"];
 var_dump($TOKEN);
 echo "<br/>";
 var_dump($TOKEN_SECRET);
