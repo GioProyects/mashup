@@ -152,17 +152,16 @@ var funciones = (function() {
           var tokenPage = "";
           let recursivo3 = function() {
             // console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
-
-            buscaTweet(nomVideo,function (data) {
-              // document.getElementById("quitarDiv").style=none;
-              if (data.tamanio>0) {
-                $.each(data.datos,function (index,item) {
-                  ponerMarcas(item,"Twitter");
-                  console.log(item);
-                });
-              }
-            });
             if (paginaActual == (numConsultas - 1)) {
+              buscaTweet(nomVideo,function (data) {
+                // document.getElementById("quitarDiv").style=none;
+                if (data.tamanio>0) {
+                  $.each(data.datos,function (index,item) {
+                    ponerMarcas(item,"Twitter");
+                    console.log(item);
+                  });
+                }
+              });
               document.getElementById('bloque_paginacion').style.display="block";
               var btnPrev=document.getElementById('btn_prev');
               var btnSig=document.getElementById('btn_next');
@@ -229,7 +228,6 @@ var funciones = (function() {
           };
           recursivo3();
         } else {
-
           buscaTweet(nomVideo,function (data) {
             // document.getElementById("quitarDiv").style=none;
             if (data.tamanio>0) {
@@ -240,8 +238,6 @@ var funciones = (function() {
             }
           });
 
-          // document.getElementById('blok_paginacion').style.display="block";
-          // console.log(temp);
           document.getElementById('bloque_paginacion').style.display="block";
           var btnPrev=document.getElementById('btn_prev');
           var btnSig=document.getElementById('btn_next');
