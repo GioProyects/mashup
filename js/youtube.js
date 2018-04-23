@@ -34,14 +34,14 @@ var funciones = (function() {
     xhttp.send();
   };
 
-  var buscaTweet = function(nombreTweet,oauth_token,oauth_access_token, callback) {
+  var buscaTweet = function(nombreTweet, callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         callback(JSON.parse(this.responseText));
       }
     };
-    xhttp.open("GET", "twitter/twitter.php?q=" + nombreTweet+"&oauth_token="+oauth_token+"&oauth_access_token="+oauth_access_token, true);
+    xhttp.open("GET", "twitter/twitter.php?q=" + nombreTweet, true);
     xhttp.send();
   };
 
@@ -152,9 +152,8 @@ var funciones = (function() {
           var tokenPage = "";
           let recursivo3 = function() {
             // console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
-            var t=document.getElementById("token").value;
-            var y=document.getElementById("token_access").value;
-            buscaTweet(nomVideo,t,y,function (data) {
+
+            buscaTweet(nomVideo,function (data) {
               // document.getElementById("quitarDiv").style=none;
               if (data.tamanio>0) {
                 $.each(data.datos,function (index,item) {
@@ -230,12 +229,8 @@ var funciones = (function() {
           };
           recursivo3();
         } else {
-          var t=document.getElementById("token").value;
-          // var y=document.getElementById("token_access").value;
 
-          console.log(t);
-          // console.log(y);
-          buscaTweet(nomVideo,t,y,function (data) {
+          buscaTweet(nomVideo,function (data) {
             // document.getElementById("quitarDiv").style=none;
             if (data.tamanio>0) {
               $.each(data.datos,function (index,item) {
