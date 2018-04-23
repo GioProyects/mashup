@@ -8,8 +8,10 @@ define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
 // $TOKEN=$_SESSION["oauth_token"];
 // $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
 
-$TOKEN=$_REQUEST["oauth_token"];
-$TOKEN_SECRET=$_REQUEST["oauth_access_token"];
+$TOKEN=$_SESSION["oauth_token"];
+$TOKEN_SECRET=$_SESSION["oauth_access_token"];
+var_dump($TOKEN);
+var_dump($TOKEN_SECRET);
 $buscar=$_REQUEST['q'];
 // $buscar="#love";
 
