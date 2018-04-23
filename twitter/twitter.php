@@ -6,13 +6,13 @@ define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
 
 $TOKEN=$_SESSION["oauth_token"];
 $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
-var_dump($TOKEN);
-echo "<br/>";
-var_dump($TOKEN_SECRET);
+// var_dump($TOKEN);
+// echo "<br/>";
+// var_dump($TOKEN_SECRET);
 $buscar=$_REQUEST['q'];
 
 if (isset($TOKEN)) {
-  $buscar="#".$buscar;
+  // $buscar="#".$buscar;
   $settings = array(
     'oauth_access_token' => $TOKEN,
     'oauth_access_token_secret' => $TOKEN_SECRET,
@@ -20,7 +20,7 @@ if (isset($TOKEN)) {
     'consumer_secret' => CONSUMER_SECRET
   );
   $url="https://api.twitter.com/1.1/search/tweets.json";
-  $getfield="?q=".$buscar."&count=100";
+  $getfield="?q=#".$buscar."&count=100";
   $requestMethod = 'GET';
   $url2="https://api.twitter.com/1.1/statuses/show.json";
 
