@@ -35,11 +35,11 @@ $TOKEN_SECRET=$credenciales["oauth_token_secret"];
 
 $_SESSION["oauth_token"]=$credenciales["oauth_token"];
 $_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
-$_SESSION["loggedin"]=true;
+$_SESSION["loggedin"]=$credenciales["oauth_callback_confirmed"];
 
 $url2="https://api.twitter.com/oauth/authorize";
 $requestMethod2="GET";
-$getfield2="?oauth_token=".$credenciales["oauth_token"];
+$getfield2="?oauth_token=".$TOKEN;
 
 $settings = array(
   'oauth_access_token' => $TOKEN,
