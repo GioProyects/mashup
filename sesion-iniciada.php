@@ -1,11 +1,10 @@
 <?php
 session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
-  // echo "$_SESSION[0]";
-  // echo "$_SESSION[1]";
-  // echo "$_SESSION[2]";
+
 }else {
-  echo "<p> Esta pagina es solo para usuarios registrados</p>";
+  //echo "<p> Esta pagina es solo para usuarios registrados</p>";
+  echo '<div class="alert alert-warning" role="alert">Warning alert</div>';
   echo "<br/><a href='index.php'> Iniciar Sesion</a>";
   exit;
 }
@@ -26,7 +25,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
    <body>
 
      <div class="container">
-       <nav class="navbar navbar-default">
+       <!-- <nav class="navbar navbar-expand-sm navbar-dark bg-faded">
          <div class="navbar-header">
            <a class="navbar-brand"> Youtube API + Google Maps API + Twitter API</a>
          </div>
@@ -36,10 +35,25 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
              <a href="cerrar-sesion.php">Cerrar sesión</a>
            </div>
          </ul>
-       </nav>
+       </nav> -->
 
+       <nav class="navbar navbar-expand-sm navbar-dark bg-faded" style="background:coral;">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <!-- Brand -->
+         <a class="navbar-brand" href="#">Youtube API + Google Maps API + Twitter API</a>
+         <!-- Links -->
+         <div class="collapse navbar-collapse justify-content-end" id="nav-content">
+           <ul class="navbar-nav">
+             <li class="nav-item">
+               <a class="nav-link" href="twitter/autenticacion.php">Cerrar Sesión</a>
+             </li>
+          </ul>
+        </nav>
+        <br>
        <div class="row">
-         <div class="col-md-12 col-md-12 col-lg-12">
+         <!--<div class="col-md-12 col-md-12 col-lg-12">
            <form>
              <div class="form-group">
                <label for="usr">Nombre:</label>
@@ -51,8 +65,31 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
              </div>
              <button id="btnBuscar" type="button" class="btn btn-danger">Buscar</button>
            </form>
-         </div>
+         </div>-->
+         <!-- <div class="col-md-12 col-md-12 col-lg-12">
+           <div class="input-group-prepend">
+             <span class="input-group-text">Nombre:</span>
+           </div>
+           <input type="text" class="form-control" id="nomVideo" placeholder="Ejem:love,we,car" aria-label="Amount (rounded to the nearest dollar)" aria-describedby="basic-addon">
+         </div> -->
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre:</span>
+          </div>
+          <input type="text" id="nomVideo" class="form-control" placeholder="Ejem:love,we,car" aria-label="Amount (rounded to the nearest dollar)" aria-describedby="basic-addon">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Numero</span>
+          </div>
+          <input type="number" id="numVideo" class="form-control" placeholder="Mas seguro poner arriba de los 100" aria-label="Amount (rounded to the nearest dollar)" aria-describedby="basic-addon">
+        </div>
+
+        <button id="btnBuscar" type="button" class="btn btn-danger">Buscar</button>
        </div>
+       <br>
        <div class="row">
          <div class="col-lg-6">
            <div class="row" id="results">
@@ -71,7 +108,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
            </div>
          </div>
 
-
+         <br>
          <div class="col-lg-6">
            <div id="map"></div>
          </div>

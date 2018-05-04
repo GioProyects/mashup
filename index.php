@@ -13,8 +13,8 @@
 </head>
 
 <body>
-  <div class="container">
-    <nav class="navbar navbar-expand-sm navbar-light bg-faded">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-faded" style="background:coral;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
