@@ -24,5 +24,5 @@ $response = $twitter->setGetfield($getfield)
     ->performRequest();
 
 
-echo $response;
+echo json_encode($response);
  ?>
