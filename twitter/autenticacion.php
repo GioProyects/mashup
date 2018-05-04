@@ -14,6 +14,7 @@ $settings = array(
 );
 
 $url="https://api.twitter.com/oauth/request_token";
+// $url="https://api.twitter.com/oauth/access_token";
 $requestMethod="POST";
 $postfields=array(
 );
@@ -29,14 +30,14 @@ foreach ($porcion as $k) {
   $temp=explode("=",$k);
   $credenciales[$temp[0]]=$temp[1];
 }
-
+//
 $TOKEN=$credenciales["oauth_token"];
 $TOKEN_SECRET=$credenciales["oauth_token_secret"];
-
+//
 $_SESSION["oauth_token"]=$credenciales["oauth_token"];
 $_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
 $_SESSION["loggedin"]=$credenciales["oauth_callback_confirmed"];
-
+//
 $url2="https://api.twitter.com/oauth/authorize";
 $requestMethod2="GET";
 $getfield2="?oauth_token=".$TOKEN;
@@ -54,6 +55,7 @@ $response2 = $twitter->setGetfield($getfield2)
     ->performRequest();
 
 echo $response2;
+// var_dump($response2);
 
 // array(3) {
 //    ["oauth_token"]=> string(27) "a2vYlgAAAAAA5csJAAABYvDAIpw"
