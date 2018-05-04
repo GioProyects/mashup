@@ -218,11 +218,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
               </div>
               <div class="w3-col m3">
                 <div id="bloque_paginacion" style="display:none;">
+
                   <ul class="pagination">
+                    <li>Pagina: <span id="page"></span></li>
                     <li id="btn_prev" class="page-item"><a class="page-link" >Anterior</a></li>
                     <li id="btn_next" class="page-item"><a class="page-link" >Siguiente</a></li>
                   </ul>
-
                 </div>
               </div>
             </div>
