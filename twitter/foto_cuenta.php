@@ -14,6 +14,8 @@ $settings = array(
   'consumer_secret' => CONSUMER_SECRET
 );
 $url="https://api.twitter.com/1.1/account/verify_credentials.json";
+$requestMethod="GET";
+$getfield="";
 //$getfield="?q=#".$buscar."&count=100";
 
 $twitter = new TwitterAPIExchange($settings);
