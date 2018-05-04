@@ -3,8 +3,8 @@ session_start();
 require_once 'TwitterAPIExchange.php';
 define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
 define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
-$TOKEN='449924072-LfvTLKWeVwVGKqDCoISSOrAUDVZx2tSaJjEN6aDe';
-$TOKEN_SECRET='cXJLCOaSna7LycPH0TephGBQkYhwuv3h9lCdAqg8c96RU';
+$TOKEN='449924072-wLFORhlA94XcTTYJzWW9vnG4kN7TMBPkCAfgZKWi';
+$TOKEN_SECRET='U5IAJAoLbzlzPLR98pHWyi137Y44S1LyV1F2LOYsWg8oi';
 
 $settings = array(
   'oauth_access_token' => $TOKEN,
@@ -54,8 +54,6 @@ $response2 = $twitter->setGetfield($getfield2)
     ->performRequest();
 
 echo $response2;
-
-
 
 // var_dump($response2);
 
