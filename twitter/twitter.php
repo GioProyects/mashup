@@ -12,7 +12,7 @@ $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
 $buscar=$_REQUEST['q'];
 // $buscar="amor";
 
-if (isset($buscar)) {
+if (isset($TOKEN)) {
   // $buscar="#".$buscar;
   $settings = array(
     'oauth_access_token' => $TOKEN,
