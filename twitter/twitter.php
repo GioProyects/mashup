@@ -6,31 +6,31 @@ define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
 
 $TOKEN=$_SESSION["oauth_token"];
 $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
- echo $TOKEN;
-echo "<br/>";
- echo $TOKEN_SECRET;
+//  echo $TOKEN;
+// echo "<br/>";
+//  echo $TOKEN_SECRET;
 // $buscar=$_REQUEST['q'];
-// $buscar="amor";
+$buscar="amor";
 
 if (isset($TOKEN)) {
-  // $buscar="#".$buscar;
-  // $settings = array(
-  //   'oauth_access_token' => $TOKEN,
-  //   'oauth_access_token_secret' => $TOKEN_SECRET,
-  //   'consumer_key' => CONSUMER_KEY,
-  //   'consumer_secret' => CONSUMER_SECRET
-  // );
-  // $url="https://api.twitter.com/1.1/search/tweets.json";
-  // $getfield="?q=#".$buscar."&count=100";
-  // $requestMethod = 'GET';
-  // $url2="https://api.twitter.com/1.1/statuses/show.json";
-  //
-  // $twitter = new TwitterAPIExchange($settings);
-  // $response = $twitter->setGetfield($getfield)
-  //     ->buildOauth($url, $requestMethod)
-  //     ->performRequest();
-  //
-  // var_dump($response);
+  $buscar="#".$buscar;
+  $settings = array(
+    'oauth_access_token' => $TOKEN,
+    'oauth_access_token_secret' => $TOKEN_SECRET,
+    'consumer_key' => CONSUMER_KEY,
+    'consumer_secret' => CONSUMER_SECRET
+  );
+  $url="https://api.twitter.com/1.1/search/tweets.json";
+  $getfield="?q=#".$buscar."&count=100";
+  $requestMethod = 'GET';
+  $url2="https://api.twitter.com/1.1/statuses/show.json";
+
+  $twitter = new TwitterAPIExchange($settings);
+  $response = $twitter->setGetfield($getfield)
+      ->buildOauth($url, $requestMethod)
+      ->performRequest();
+
+  var_dump($response);
   // $ids = array();
   // foreach (json_decode($response)->statuses as $key) {
   //   $ids[]=$key->id;
@@ -56,9 +56,9 @@ if (isset($TOKEN)) {
   //   "tamanio"=>sizeof($json))
   //   );
 }else{
-  // echo json_encode(array(
-  //   "error"=>"no hay parametro"
-  // ));
+  echo json_encode(array(
+    "error"=>"no hay parametro"
+  ));
 }
 
 
