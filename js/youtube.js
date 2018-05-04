@@ -151,6 +151,7 @@ var funciones = (function() {
   var main = function() {
     getFotoPerfil();
     document.getElementById("btnBuscar").addEventListener("click", function() {
+      initMap();
       var nomVideo = document.getElementById("nomVideo").value;
       var numVideo = document.getElementById("numVideo").value;
       if (nomVideo == "" || numVideo == "") {
