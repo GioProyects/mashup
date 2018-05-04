@@ -3,8 +3,8 @@ session_start();
 require_once 'TwitterAPIExchange.php';
 define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
 define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
-$TOKEN='449924072-wLFORhlA94XcTTYJzWW9vnG4kN7TMBPkCAfgZKWi';
-$TOKEN_SECRET='U5IAJAoLbzlzPLR98pHWyi137Y44S1LyV1F2LOYsWg8oi';
+$TOKEN='449924072-LrNEFXwN0UOaMjY0GTiwWe2lgGGWwOWyvjp7kfZl';
+$TOKEN_SECRET='LlVQ0mpXVAuNroP72q5rybvyJDKY6RgIrAqiHK2lM1LLl';
 
 $settings = array(
   'oauth_access_token' => $TOKEN,
