@@ -9,6 +9,17 @@ var funciones = (function() {
   var objJson = [];
   var map;
 
+   var getFotoPerfil=function () {
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+       if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("fotoPerfil").setAttribute("src",this.responseText);
+       }
+     };
+     xhttp.open("GET","twitter/foto_cuenta.php",true);
+     xhttp.send();
+   }
+
   var buscar = function(nombre, numero, token, callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -137,6 +148,7 @@ var funciones = (function() {
   }
 
   var main = function() {
+    getFotoPerfil();
     document.getElementById("btnBuscar").addEventListener("click", function() {
       var nomVideo = document.getElementById("nomVideo").value;
       var numVideo = document.getElementById("numVideo").value;

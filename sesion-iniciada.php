@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
-  echo $_SESSION["oauth_token"];
-  echo $_SESSION["oauth_token_secret"];
-  echo $_SESSION["loggedin"];
+  // echo $_SESSION["oauth_token"];
+  // echo $_SESSION["oauth_token_secret"];
+  // echo $_SESSION["loggedin"];
 }else {
   //echo "<p> Esta pagina es solo para usuarios registrados</p>";
   echo '<div class="alert alert-warning" role="alert">Necesita iniciar sesion para ver esta pagina</div>';
@@ -43,7 +43,9 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>
          </button>
+
          <!-- Brand -->
+         <img class="rounded-circle" id="fotoPerfil">
          <a class="navbar-brand" href="#">Youtube API + Google Maps API + Twitter API</a>
          <!-- Links -->
          <div class="collapse navbar-collapse justify-content-end" id="nav-content">
@@ -54,6 +56,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
           </ul>
         </nav>
         <br>
+        <div class="row">
+          <div class="col-sm-3 col-sm-3 col-lg-3">
+
+          </div>
+
+        </div>
        <div class="row">
          <!--<div class="col-md-12 col-md-12 col-lg-12">
            <form>
