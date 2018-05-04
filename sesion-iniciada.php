@@ -31,8 +31,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
     $temp=explode("=",$k);
     $credenciales[$temp[0]]=$temp[1];
   }
-  $TOKEN=$credenciales["oauth_token"];
-  $TOKEN_SECRET=$credenciales["oauth_token_secret"];
+  $_SESSION["oauth_token"]=$credenciales["oauth_token"];
+  $_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
 
 
   //"oauth_token=449924072-wLFORhlA94XcTTYJzWW9vnG4kN7TMBPkCAfgZKWi&
