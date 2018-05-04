@@ -33,7 +33,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
   }
   $_SESSION["oauth_token"]=$credenciales["oauth_token"];
   $_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
-  
+
 
   //"oauth_token=449924072-wLFORhlA94XcTTYJzWW9vnG4kN7TMBPkCAfgZKWi&
   //oauth_token_secret=U5IAJAoLbzlzPLR98pHWyi137Y44S1LyV1F2LOYsWg8oi&
@@ -144,10 +144,11 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
              <div class="col-lg-4">
                <div id="bloque_paginacion" style="display:none;">
                  <ul class="pagination">
+                   <h5>Pagina: <span id="page"></span></h5>
                    <li id="btn_prev" class="page-item"><a class="page-link" >Anterior</a></li>
                    <li id="btn_next" class="page-item"><a class="page-link" >Siguiente</a></li>
                  </ul>
-                 <h5>Pagina: <span id="page"></span></h5>
+
                </div>
              </div>
            </div>
