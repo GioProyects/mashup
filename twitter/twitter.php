@@ -9,11 +9,11 @@ $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
 //  echo $TOKEN;
 // echo "<br/>";
 //  echo $TOKEN_SECRET;
-// $buscar=$_REQUEST['q'];
-$buscar="amor";
+$buscar=$_REQUEST['q'];
+// $buscar="amor";
 
-if (isset($TOKEN)) {
-  $buscar="#".$buscar;
+if (isset($buscar)) {
+  // $buscar="#".$buscar;
   $settings = array(
     'oauth_access_token' => $TOKEN,
     'oauth_access_token_secret' => $TOKEN_SECRET,
