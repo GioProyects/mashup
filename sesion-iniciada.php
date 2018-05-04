@@ -24,7 +24,18 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
                     ->setPostfields($postfields)
                     ->performRequest();
 
-  var_dump($response3);
+
+  $porcion=explode("&",$response3);
+  $credenciales = array();
+  foreach ($porcion as $k) {
+    $temp=explode("=",$k);
+    $credenciales[$temp[0]]=$temp[1];
+  }
+  $TOKEN=$credenciales["oauth_token"];
+  $TOKEN_SECRET=$credenciales["oauth_token_secret"];
+  //"oauth_token=449924072-wLFORhlA94XcTTYJzWW9vnG4kN7TMBPkCAfgZKWi&
+  //oauth_token_secret=U5IAJAoLbzlzPLR98pHWyi137Y44S1LyV1F2LOYsWg8oi&
+  //user_id=449924072&screen_name=giogow3halo"
 }else {
   //echo "<p> Esta pagina es solo para usuarios registrados</p>";
   echo '<div class="alert alert-warning" role="alert">Necesita iniciar sesion para ver esta pagina</div>';
