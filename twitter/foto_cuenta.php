@@ -25,5 +25,5 @@ $response = $twitter->setGetfield($getfield)
 
 
 var_dump(response);
-echo json_decode($response);
+// echo json_decode($response);
  ?>
