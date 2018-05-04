@@ -1,21 +1,6 @@
-.results {
-  background-color: #222;
-  color: #ccc;
-}
-/* remove defaults from responsive cols */
-
-.nopadding {
-  padding: 2px !important;
-  margin: 0 !important;
-  outline: 2px solid #333;
-  background: #333;
-}
-
-.bs-example{
-	margin: 20px;
-}
-
-#map{
-  width: 500px;
-  height: 300px;
+#map {
+  position: relative;
+  padding-bottom: 75%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
 }
