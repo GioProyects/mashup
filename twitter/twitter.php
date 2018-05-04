@@ -30,31 +30,31 @@ if (isset($TOKEN)) {
       ->buildOauth($url, $requestMethod)
       ->performRequest();
 
-  var_dump($response);
-  // $ids = array();
-  // foreach (json_decode($response)->statuses as $key) {
-  //   $ids[]=$key->id;
-  // }
-  // $json=array();
-  // $conta=0;
-  // foreach ($ids as $id) {
-  //   $getfield2="?id=".$id;
-  //   $response2 = $twitter->setGetfield($getfield2)
-  //       ->buildOauth($url2, $requestMethod)
-  //       ->performRequest();
-  //
-  //   $respuesta=json_decode($response2);
-  //   if (!is_null($respuesta->geo)) {
-  //     $json[]=array(
-  //       "latitude"=>$respuesta->geo->coordinates[0],
-  //       "longitude"=>$respuesta->geo->coordinates[1]
-  //     );
-  //   }
-  // }
-  // echo json_encode(array(
-  //   "datos"=>$json,
-  //   "tamanio"=>sizeof($json))
-  //   );
+  // var_dump($response);
+  $ids = array();
+  foreach (json_decode($response)->statuses as $key) {
+    $ids[]=$key->id;
+  }
+  $json=array();
+  $conta=0;
+  foreach ($ids as $id) {
+    $getfield2="?id=".$id;
+    $response2 = $twitter->setGetfield($getfield2)
+        ->buildOauth($url2, $requestMethod)
+        ->performRequest();
+
+    $respuesta=json_decode($response2);
+    if (!is_null($respuesta->geo)) {
+      $json[]=array(
+        "latitude"=>$respuesta->geo->coordinates[0],
+        "longitude"=>$respuesta->geo->coordinates[1]
+      );
+    }
+  }
+  echo json_encode(array(
+    "datos"=>$json,
+    "tamanio"=>sizeof($json))
+    );
 }else{
   echo json_encode(array(
     "error"=>"no hay parametro"
