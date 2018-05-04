@@ -14,7 +14,6 @@ $settings = array(
 );
 
 $url="https://api.twitter.com/oauth/request_token";
-// $url="https://api.twitter.com/oauth/access_token";
 $requestMethod="POST";
 $postfields=array(
 );

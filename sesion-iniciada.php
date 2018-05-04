@@ -1,38 +1,40 @@
 <?php
 session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
-  require_once 'twitter/TwitterAPIExchange.php';
-  define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
-  define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
-  $TOKEN=$_SESSION["oauth_token"];
-  $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
+  // require_once 'twitter/TwitterAPIExchange.php';
+  // define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
+  // define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
+  // $TOKEN=$_SESSION["oauth_token"];
+  // $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
+  //
+  // $url="https://api.twitter.com/oauth/access_token";
+  // $requestMethod="POST";
+  // $postfields=array(
+  //   "oauth_verifier"=>$_REQUEST["oauth_verifier"]
+  // );
+  // $settings = array(
+  //   'oauth_access_token' => $TOKEN,
+  //   'oauth_access_token_secret' => $TOKEN_SECRET,
+  //   'consumer_key' => CONSUMER_KEY,
+  //   'consumer_secret' => CONSUMER_SECRET
+  // );
+  //
+  // $twitter=new TwitterAPIExchange($settings);
+  // $response3=$twitter->buildOauth($url,$requestMethod)
+  //                   ->setPostfields($postfields)
+  //                   ->performRequest();
+  //
+  //
+  // $porcion=explode("&",$response3);
+  // $credenciales = array();
+  // foreach ($porcion as $k) {
+  //   $temp=explode("=",$k);
+  //   $credenciales[$temp[0]]=$temp[1];
+  // }
+  // $TOKEN=$credenciales["oauth_token"];
+  // $TOKEN_SECRET=$credenciales["oauth_token_secret"];
 
-  $url="https://api.twitter.com/oauth/access_token";
-  $requestMethod="POST";
-  $postfields=array(
-    "oauth_verifier"=>$_REQUEST["oauth_verifier"]
-  );
-  $settings = array(
-    'oauth_access_token' => $TOKEN,
-    'oauth_access_token_secret' => $TOKEN_SECRET,
-    'consumer_key' => CONSUMER_KEY,
-    'consumer_secret' => CONSUMER_SECRET
-  );
-
-  $twitter=new TwitterAPIExchange($settings);
-  $response3=$twitter->buildOauth($url,$requestMethod)
-                    ->setPostfields($postfields)
-                    ->performRequest();
-
-
-  $porcion=explode("&",$response3);
-  $credenciales = array();
-  foreach ($porcion as $k) {
-    $temp=explode("=",$k);
-    $credenciales[$temp[0]]=$temp[1];
-  }
-  $TOKEN=$credenciales["oauth_token"];
-  $TOKEN_SECRET=$credenciales["oauth_token_secret"];
+  
   //"oauth_token=449924072-wLFORhlA94XcTTYJzWW9vnG4kN7TMBPkCAfgZKWi&
   //oauth_token_secret=U5IAJAoLbzlzPLR98pHWyi137Y44S1LyV1F2LOYsWg8oi&
   //user_id=449924072&screen_name=giogow3halo"
