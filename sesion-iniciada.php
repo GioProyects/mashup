@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
-  require_once 'TwitterAPIExchange.php';
+  require_once 'twitter/TwitterAPIExchange.php';
   define('CONSUMER_KEY', 'IsfOhNHmYtQS5myPZvXB7kqCf');
   define('CONSUMER_SECRET', 'hSe6ZQbao5wEyIvlGFXhA1itlSME9NBhsqOsiKYm5jmOUFJLMx');
   $TOKEN=$_SESSION["oauth_token"];
