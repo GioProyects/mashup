@@ -51,7 +51,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
          <div class="collapse navbar-collapse justify-content-end" id="nav-content">
            <ul class="navbar-nav">
              <li class="nav-item">
-               <a class="nav-link" href="twitter/autenticacion.php">Cerrar Sesión</a>
+               <a class="nav-link" href="cerrar-sesion.php">Cerrar Sesión</a>
              </li>
           </ul>
         </nav>
