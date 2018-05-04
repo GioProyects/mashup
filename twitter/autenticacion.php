@@ -55,6 +55,28 @@ $response2 = $twitter->setGetfield($getfield2)
     ->performRequest();
 
 echo $response2;
+
+
+$url="https://api.twitter.com/oauth/access_token";
+$requestMethod="POST";
+$postfields=array(
+  "oauth_verifier"=>$_REQUEST["oauth_verifier"]
+);
+$settings = array(
+  'oauth_access_token' => $TOKEN,
+  'oauth_access_token_secret' => $TOKEN_SECRET,
+  'consumer_key' => CONSUMER_KEY,
+  'consumer_secret' => CONSUMER_SECRET
+);
+
+$twitter=new TwitterAPIExchange($settings);
+$response3=$twitter->buildOauth($url,$requestMethod)
+                  ->setPostfields($postfields)
+                  ->performRequest();
+
+var_dump($response3);
+
+
 // var_dump($response2);
 
 // array(3) {

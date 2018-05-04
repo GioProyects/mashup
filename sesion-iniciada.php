@@ -3,7 +3,6 @@ session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
   // echo $_SESSION["oauth_token"];
   // echo $_SESSION["oauth_token_secret"];
-  echo $_REQUEST["oauth_verifier"];
 }else {
   //echo "<p> Esta pagina es solo para usuarios registrados</p>";
   echo '<div class="alert alert-warning" role="alert">Necesita iniciar sesion para ver esta pagina</div>';
