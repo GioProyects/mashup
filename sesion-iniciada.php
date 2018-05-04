@@ -79,13 +79,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
          </button>
 
          <!-- Brand -->
-         <img class="rounded-circle" id="fotoPerfil">
          <a class="navbar-brand" href="#">Youtube API + Google Maps API + Twitter API</a>
          <!-- Links -->
          <div class="collapse navbar-collapse justify-content-end" id="nav-content">
            <ul class="navbar-nav">
              <li class="nav-item">
-               <a class="nav-link" href="cerrar-sesion.php">Cerrar Sesión</a>
+               <a class="nav-link" href="cerrar-sesion.php"><img class="rounded-circle" id="fotoPerfil"> Cerrar Sesión</a>
              </li>
           </ul>
         </nav>
@@ -141,10 +140,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
            <br>
            <div class="row">
              <div class="col-lg-3"></div>
-             <div class="col-lg-4">
+             <div class="col-sm-3 col-md-3 col-lg-3">
+               <h5>Pagina: <span id="page"></span></h5>
+             </div>
+             <div class="col-sm-3 col-md-4 col-lg-4">
                <div id="bloque_paginacion" style="display:none;">
                  <ul class="pagination">
-                   <h5>Pagina: <span id="page"></span></h5>
                    <li id="btn_prev" class="page-item"><a class="page-link" >Anterior</a></li>
                    <li id="btn_next" class="page-item"><a class="page-link" >Siguiente</a></li>
                  </ul>

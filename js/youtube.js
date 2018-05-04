@@ -166,7 +166,7 @@ var funciones = (function() {
           let recursivo3 = function() {
             // console.log("Consulta num:" + paginaActual + ", Total consultas:" + numConsultas);
             if (paginaActual == (numConsultas - 1)) {
-              buscaTweet(nomVideo,function (data) {
+              /*buscaTweet(nomVideo,function (data) {
                 // document.getElementById("quitarDiv").style=none;
                 if (data.tamanio>0) {
                   $.each(data.datos,function (index,item) {
@@ -174,7 +174,7 @@ var funciones = (function() {
                     console.log(item);
                   });
                 }
-              });
+              });*/
               document.getElementById('bloque_paginacion').style.display="block";
               var btnPrev=document.getElementById('btn_prev');
               var btnSig=document.getElementById('btn_next');
