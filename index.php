@@ -20,7 +20,7 @@
       </button>
 
       <!-- Brand -->
-      <a class="navbar-brand" href="#">Youtube API + Google Maps API + Twitter API</a>
+      <a class="navbar-brand" href="#">Mashup</a>
 
       <!-- Links -->
       <div class="collapse navbar-collapse justify-content-end" id="nav-content">
