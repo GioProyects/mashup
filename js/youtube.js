@@ -192,6 +192,7 @@ var funciones = (function() {
                   }
                   infoVideos.push(element.id.videoId);
                 });
+                console.log(coordenadasVideso);
                 // poner paginacion videos
                 $("#results").html("");
                 $.get("reproductor.html", function(result) {
