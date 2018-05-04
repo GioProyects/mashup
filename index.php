@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
+  header('Location: https://mashup-ytm.herokuapp.com/sesion-iniciada.php');
+}
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 

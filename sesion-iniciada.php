@@ -33,7 +33,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
   }
   $_SESSION["oauth_token"]=$credenciales["oauth_token"];
   $_SESSION["oauth_token_secret"]=$credenciales["oauth_token_secret"];
-
+  var_dump($_SESSION["oauth_token"]);
+  var_dump($_SESSION["oauth_token_secret"]);
 
   //"oauth_token=449924072-wLFORhlA94XcTTYJzWW9vnG4kN7TMBPkCAfgZKWi&
   //oauth_token_secret=U5IAJAoLbzlzPLR98pHWyi137Y44S1LyV1F2LOYsWg8oi&
