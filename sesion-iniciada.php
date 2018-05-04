@@ -148,8 +148,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
        </div>
      </div>-->
 
-
-
      <!-- Sidebar/menu -->
      <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
        <div class="w3-container">
@@ -162,7 +160,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
          <p class="w3-text-grey"></p>
        </div>
        <div class="w3-bar-block">
-         <a href="twitter/autenticacion.php" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-twitter w3-hover-opacity w3-margin-right"></i>Cerrar Sesion</a>
+         <a href="cerrar-sesion.php" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-twitter w3-hover-opacity w3-margin-right"></i>Cerrar Sesion</a>
        </div>
      </nav>
 

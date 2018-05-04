@@ -69,7 +69,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
 
   </footer>
 
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+  <div class="w3-black w3-center w3-padding-24">Version 1.0</div>
 
 <!-- End page content -->
 </div>
