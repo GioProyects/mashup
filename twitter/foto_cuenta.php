@@ -24,5 +24,5 @@ $response = $twitter->setGetfield($getfield)
     ->performRequest();
 
 
-echo $response->$profile_background_image_url_https;
+echo $response;
  ?>
