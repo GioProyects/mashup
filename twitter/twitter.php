@@ -36,23 +36,24 @@ if (isset($TOKEN)) {
     $ids[]=$key->id;
   }
 
-  var_dump($ids);
-  // $json=array();
-  // $conta=0;
-  // foreach ($ids as $id) {
-  //   $getfield2="?id=".$id;
-  //   $response2 = $twitter->setGetfield($getfield2)
-  //       ->buildOauth($url2, $requestMethod)
-  //       ->performRequest();
-  //
-  //   $respuesta=json_decode($response2);
-  //   if (!is_null($respuesta->geo)) {
-  //     $json[]=array(
-  //       "latitude"=>$respuesta->geo->coordinates[0],
-  //       "longitude"=>$respuesta->geo->coordinates[1]
-  //     );
-  //   }
-  // }
+  // var_dump($ids);
+  $json=array();
+  $conta=0;
+  foreach ($ids as $id) {
+    $getfield2="?id=".$id;
+    $response2 = $twitter->setGetfield($getfield2)
+        ->buildOauth($url2, $requestMethod)
+        ->performRequest();
+
+    $respuesta=json_decode($response2);
+    if (!is_null($respuesta->geo)) {
+      $json[]=array(
+        "latitude"=>$respuesta->geo->coordinates[0],
+        "longitude"=>$respuesta->geo->coordinates[1]
+      );
+    }
+  }
+  var_dump($json);
   // echo json_encode(array(
   //   "datos"=>$json,
   //   "tamanio"=>sizeof($json))
