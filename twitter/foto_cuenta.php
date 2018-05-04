@@ -24,5 +24,5 @@ $response = $twitter->setGetfield($getfield)
     ->performRequest();
 
 
-echo $response->profile_image_url;
+echo $response;
  ?>
