@@ -9,8 +9,8 @@ $TOKEN_SECRET=$_SESSION["oauth_token_secret"];
 // var_dump($TOKEN);
 // echo "<br/>";
 // var_dump($TOKEN_SECRET);
-// $buscar=$_REQUEST['q'];
-$buscar="amor";
+$buscar=$_REQUEST['q'];
+// $buscar="amor";
 
 if (isset($TOKEN)) {
   // $buscar="#".$buscar;
