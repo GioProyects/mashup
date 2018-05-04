@@ -65,9 +65,9 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
 
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-dark-grey">
+  <!-- <footer class="w3-container w3-padding-32 w3-dark-grey">
 
-  </footer>
+  </footer> -->
 
   <div class="w3-black w3-center w3-padding-24">Version 1.0</div>
 
