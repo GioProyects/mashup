@@ -13,7 +13,7 @@ var funciones = (function() {
      var xhttp = new XMLHttpRequest();
      xhttp.onreadystatechange = function() {
        if (this.readyState == 4 && this.status == 200) {
-         console.log(this.responseText);
+         // console.log(this.responseText);
          document.getElementById("fotoPerfil").setAttribute("src",this.responseText);
        }
      };
@@ -172,7 +172,7 @@ var funciones = (function() {
                 if (data.tamanio>0) {
                   $.each(data.datos,function (index,item) {
                     ponerMarcas(item,"Twitter");
-                    console.log(item);
+                    // console.log(item);
                   });
                 }
               });
