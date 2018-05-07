@@ -110,12 +110,12 @@ var funciones = (function() {
     if (page == 1) {
       // btn_prev.style.visibility = "hidden";
       //btn_prev.css("visibility='hidden'");
-      btn_prev.css("visibility","hidden");
+      btn_prev.css("display","none");
 
     } else {
       // btn_prev.style.visibility = "visible";
       //btn_prev.css("visibility='visible'");
-      btn_prev.css("visibility","visible");
+      btn_prev.css("display","block");
 
     }
 
