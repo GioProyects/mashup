@@ -110,21 +110,23 @@ var funciones = (function() {
     if (page == 1) {
       // btn_prev.style.visibility = "hidden";
       //btn_prev.css("visibility='hidden'");
-      btn_prev.css("display","none");
+      btn_prev.css("visibility","hidden");
+
     } else {
       // btn_prev.style.visibility = "visible";
       //btn_prev.css("visibility='visible'");
-      btn_prev.css("display","block");
+      btn_prev.css("visibility","visible");
+
     }
 
     if (page == numPages()) {
       // btn_next.style.visibility = "hidden";
       // btn_next.css("visibility='hidden'");
-      btn_next.css("display","none");
+      btn_next.css("visibility","hidden");
     } else {
       // btn_next.style.visibility = "visible";
       // btn_next.css("visibility='visible'");
-      btn_next.css("display","block");
+      btn_next.css("visibility","visible");
     }
 
     /*for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
