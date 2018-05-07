@@ -270,8 +270,8 @@ var funciones = (function() {
                 };
                 infoVideo(item.id.videoId, function(data) {
                   if (data.items.length > 0) {
+                    console.log(data.items);
                     if (data.items.recordingDetails !== undefined) {
-                      console.log(data.items.recordingDetails);
                       ponerMarcas(map,data.items.recordingDetails,"YouTube");
                     }
                   }
