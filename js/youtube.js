@@ -99,8 +99,35 @@ var funciones = (function() {
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
     $("#results").html("");
+    
+    for (var i = (page-1) * records_per_page; i < (page * records_per_page); i++) {
+      $("#results").append(objJson[i].adName);
+      // document.getElementById("results").innerHTML+=objJson[i].adName;
+    }
+    // page_span.innerHTML = page + "/" + numPages();
+    page_span.html(page+"/"+numPages());
 
-    for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
+    if (page == 1) {
+      // btn_prev.style.visibility = "hidden";
+      // btn_prev.css("visibility='hidden'");
+      btn_prev.fadeOut(1000);
+    } else {
+      // btn_prev.style.visibility = "visible";
+      //btn_prev.css("visibility='visible'");
+      btn_prev.fadeIn(1000);
+    }
+
+    if (page == numPages()) {
+      // btn_next.style.visibility = "hidden";
+      // btn_next.css("visibility='hidden'");
+      btn_next.fadeOut(1000);
+    } else {
+      // btn_next.style.visibility = "visible";
+      // btn_next.css("visibility='visible'");
+      btn_next.fadeIn(1000);
+    }
+
+    /*for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
       $("#results").append(objJson[i].adName);
       // document.getElementById("results").innerHTML+=objJson[i].adName;
     }
@@ -121,7 +148,7 @@ var funciones = (function() {
     } else {
       // btn_next.style.visibility = "visible";
       btn_next.css("visibility='visible'");
-    }
+    }*/
   }
 
   function initMap() {
