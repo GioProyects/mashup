@@ -109,22 +109,22 @@ var funciones = (function() {
 
     if (page == 1) {
       // btn_prev.style.visibility = "hidden";
-      // btn_prev.css("visibility='hidden'");
-      btn_prev.fadeOut(1000);
+      //btn_prev.css("visibility='hidden'");
+      btn_prev.css("display","none");
     } else {
       // btn_prev.style.visibility = "visible";
       //btn_prev.css("visibility='visible'");
-      btn_prev.fadeIn(1000);
+      btn_prev.css("display","block");
     }
 
     if (page == numPages()) {
       // btn_next.style.visibility = "hidden";
       // btn_next.css("visibility='hidden'");
-      btn_next.fadeOut(1000);
+      btn_next.css("display","none");
     } else {
       // btn_next.style.visibility = "visible";
       // btn_next.css("visibility='visible'");
-      btn_next.fadeIn(1000);
+      btn_next.css("display","block");
     }
 
     /*for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
