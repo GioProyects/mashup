@@ -271,7 +271,7 @@ var funciones = (function() {
                 infoVideo(item.id.videoId, function(data) {
                   if (data.items.length > 0) {
                     if (data.items.recordingDetails !== undefined) {
-                      ponerMarcas(map,data.items.recordingDetails,"YouTube.png");
+                      ponerMarcas(map,data.items.recordingDetails,"YouTube");
                     }
                   }
                 });
