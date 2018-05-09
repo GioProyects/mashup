@@ -99,8 +99,8 @@ var funciones = (function() {
     if (page < 1) page = 1;
     if (page > numPages()) page = numPages();
     $("#results").html("");
-    
-    for (var i = (page-1) * records_per_page; i < (page * records_per_page); i++) {
+
+    for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++)  {
       $("#results").append(objJson[i].adName);
       // document.getElementById("results").innerHTML+=objJson[i].adName;
     }
@@ -299,7 +299,7 @@ var funciones = (function() {
                 };
                 infoVideo(item.id.videoId, function(data) {
                   if (data.items.length > 0) {
-                    
+
                     if (data.items.recordingDetails !== undefined) {
                       console.log(data.items.recordingDetails);
                       ponerMarcas(map,data.items.recordingDetails,"YouTube");

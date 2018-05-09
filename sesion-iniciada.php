@@ -24,7 +24,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
                     ->setPostfields($postfields)
                     ->performRequest();
 
-
   $porcion=explode("&",$response3);
   $credenciales = array();
   foreach ($porcion as $k) {
@@ -58,95 +57,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <body class="w3-light-grey w3-content" style="max-width:1600px">
-
-     <!--<div class="container">
-       <nav class="navbar navbar-expand-sm navbar-dark bg-faded" style="background:coral;">
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-         </button>
-
-         <a class="navbar-brand" href="#">Youtube API + Google Maps API + Twitter API</a>
-
-         <div class="collapse navbar-collapse justify-content-end" id="nav-content">
-           <ul class="navbar-nav">
-             <li class="nav-item">
-               <a class="nav-link" href="cerrar-sesion.php"><img class="rounded-circle" id="fotoPerfil"> Cerrar Sesión</a>
-             </li>
-          </ul>
-        </nav>
-        <br>
-        <div class="row">
-          <div class="col-sm-3 col-sm-3 col-lg-3">
-
-          </div>
-
-        </div>
-       <div class="row">
-         <div class="col-md-12 col-md-12 col-lg-12">
-           <form>
-             <div class="form-group">
-               <label for="usr">Nombre:</label>
-               <input type="text" class="form-control" id="nomVideo" placeholder="Ejem:love,we,car">
-             </div>
-             <div class="form-group">
-               <label for="pwd">Numero de videos:</label>
-               <input type="number" class="form-control" id="numVideo" placeholder="Mas seguro poner arriba de los 100">
-             </div>
-             <button id="btnBuscar" type="button" class="btn btn-danger">Buscar</button>
-           </form>
-         </div>-->
-         <!-- <div class="col-md-12 col-md-12 col-lg-12">
-           <div class="input-group-prepend">
-             <span class="input-group-text">Nombre:</span>
-           </div>
-           <input type="text" class="form-control" id="nomVideo" placeholder="Ejem:love,we,car" aria-label="Amount (rounded to the nearest dollar)" aria-describedby="basic-addon">
-         </div>
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Nombre:</span>
-          </div>
-          <input type="text" id="nomVideo" class="form-control" placeholder="Ejem:love,we,car" aria-label="Amount (rounded to the nearest dollar)" aria-describedby="basic-addon">
-        </div>
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Numero</span>
-          </div>
-          <input type="number" id="numVideo" class="form-control" placeholder="Mas seguro poner arriba de los 100" aria-label="Amount (rounded to the nearest dollar)" aria-describedby="basic-addon">
-        </div>
-
-        <button id="btnBuscar" type="button" class="btn btn-danger">Buscar</button>
-       </div>
-       <br>
-       <div class="row">
-         <div class="col-lg-6">
-           <div class="row" id="results">
-           </div>
-           <br>
-           <div class="row">
-             <div class="col-lg-3"></div>
-             <div class="col-sm-3 col-md-3 col-lg-3">
-               <h5>Pagina: <span id="page"></span></h5>
-             </div>
-             <div class="col-sm-3 col-md-4 col-lg-4">
-               <div id="bloque_paginacion" style="display:none;">
-                 <ul class="pagination">
-                   <li id="btn_prev" class="page-item"><a class="page-link" >Anterior</a></li>
-                   <li id="btn_next" class="page-item"><a class="page-link" >Siguiente</a></li>
-                 </ul>
-
-               </div>
-             </div>
-           </div>
-         </div>
-
-         <br>
-         <div class="col-lg-6">
-           <div id="map"></div>
-         </div>
-       </div>
-     </div>-->
 
      <!-- Sidebar/menu -->
      <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
@@ -254,8 +164,6 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]==true) {
      </script>
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
      <script src="js/youtube.js"></script>
