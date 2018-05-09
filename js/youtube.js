@@ -105,6 +105,7 @@ var funciones = (function() {
       // document.getElementById("results").innerHTML+=objJson[i].adName;
     }
     // page_span.innerHTML = page + "/" + numPages();
+    page_span.html("");
     page_span.html(page+"/"+numPages());
 
     if (page == 1) {
