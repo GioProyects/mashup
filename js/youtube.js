@@ -123,11 +123,11 @@ var funciones = (function() {
     if (page == numPages()) {
       // btn_next.style.visibility = "hidden";
       // btn_next.css("visibility='hidden'");
-      btn_next.css("display","hidden");
+      btn_next.css("display","none");
     } else {
       // btn_next.style.visibility = "visible";
       // btn_next.css("visibility='visible'");
-      btn_next.css("display","visible");
+      btn_next.css("display","block");
     }
 
     /*for (var i = (page - 1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
